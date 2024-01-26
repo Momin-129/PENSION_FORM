@@ -1,0 +1,76 @@
+@{
+    ViewBag.Title = "Result";
+}
+@{
+    Layout = null;
+}
+
+@{
+    var formDataJson = Newtonsoft.Json.JsonConvert.SerializeObject(TempData["FormData"]);
+}
+
+
+@section resultStyles {
+    <style>
+
+    </style>
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class=" container-fluid d-flex justify-content-center align-items-center flex-column p-3 px-5 ">
+        <div class="d-flex justify-content-center flex-column text-center">
+            <h3>Union Territory of Jammu and Kashmir </h3>
+            <h4>Office of District Social Welfare Officer, DODA</h4>
+            <h5>Sanction Letter for JK-ISSS</h5>
+        </div>
+        <div class="justify-content-start" style="width: 100%;">
+            To <br><br>
+            THE MANAGER <br>
+            THE JAMMU AND KASHMIR BANK LIMITED <br>
+            B/O RAIL HEAD COMPLEX, JAMMU <br><br>
+            Please find the Particulars of Pensioner given below:
+        </div>
+        <table class="table table-bordered">
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+        <div class="justify-content-start">
+            The Pensioner referred above has been sanctioned financial assistance under Pension Scheme JK-ISS, You
+            are
+            requested to credit an amount of Rs. 1000/- per month in the above mentioned bank account of the
+            beneficiary
+            after verifying the account number, unless stopped by department.
+        </div>
+        <button type="button" class="btn btn-light" onclick="printToPDF()">Print</button>
+    </div>
+</body>
+<script src="~/js/result/result.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var formData = JSON.parse(@Html.Raw(formDataJson));
+
+        generateTable(formData);
+    });
+</script>
+
+</html>
+
+
+
+
+@section resultScript {
+
+}

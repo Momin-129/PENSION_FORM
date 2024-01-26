@@ -1,0 +1,8 @@
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/NICTest
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/appsettings.Development.json
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/appsettings.json
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/NICTest.dll
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/NICTest.deps.json
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/NICTest.runtimeconfig.json
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/NICTest.pdb
+/home/momin/Github/PensionForm/PENSION-FORM/publish_output/Newtonsoft.Json.dll

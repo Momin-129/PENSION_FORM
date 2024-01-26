@@ -1,0 +1,532 @@
+@{
+  ViewData["Title"] = "Form";
+}
+
+@section styles {
+  <link rel="stylesheet" href="~/css/style.css">
+}
+
+
+<div class="container-fluid d-flex justify-content-center flex-column px-5">
+  <div class="container-fluid p-5 bg-primary text-white text-center">
+    <h1>UNION TERRITORY OF JAMMU AND KASHMIR</h1>
+    <h2>SOCIAL WELFARE DEPARTMENT</h2>
+    <p>Application Form for Sanction of Pension under JK-ISSS / GOI-NSAP</p>
+  </div>
+
+  <form id="pensionForm">
+    <div class="container-fluid mt-1 py-2 px-2">
+
+      @* Location Details *@
+      <div class="row py-2 border border-2 border-dark rounded">
+        <div class="col-sm-12">
+          <p
+            class="d-flex align-items-center fw-bold justify-content-center bg-success text-white rounded py-1  heading">
+            Location Details
+          </p>
+        </div>
+        <div class="col-sm-12 gap-3 ">
+          <div class="row px-3">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="district">Select District</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="district" id="district">
+                <option value="Please Select">Please Select</option>
+                <option value="jammu">Jammu</option>
+                <option value="rajouri">Rajouri</option>
+              </select>
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label>Select Tehsil Social Welfare Office (TSWO)</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="tehsil" id="tehsil">
+                <option value="Please Select">
+                  Please Select
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @* Pension Type *@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p class="d-flex align-items-center justify-content-center bg-success text-white rounded py-1 heading">
+            Pension Type
+          </p>
+        </div>
+        <div class="col-sm-12 gap-3 ">
+          <div class="row px-3">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="Pension Type">Select Pension Type</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="pensionType" id="pensionType">
+                <option value="Please Select">Please Select</option>
+                <option value="OLD AGE PENSION">OLD AGE PENSION</option>
+                <option value="WOMEN IN DISTRESS">WOMEN IN DISTRESS</option>
+                <option value="PHYSICALLY CHALLENGED PERSON">PYSICALLY CHALLENGED PERSON</option>
+                <option value="TRANSGENDER PERSON">TRANSGENDER PERSON</option>
+              </select>
+            </div>
+          </div>
+          <div class="row px-3 mt-1" id="pensionTypeContent">
+
+          </div>
+        </div>
+      </div>
+
+      @* Applicant Details *@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p class="d-flex align-items-center justify-content-center bg-success text-white rounded py-1  heading">
+            Applicant Details
+          </p>
+        </div>
+        <div class="col-sm-12 gap-3 ">
+          <div class="row px-3">
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="Pension Type">Name of the Applicant</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3 fw-bold ">
+              <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="Pension Type">Photograph of Applicant</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3 d-flex flex-column fw-bold ">
+              <input type="file" name="photograph" id="photograph" style="color:red" />
+            </div>
+          </div>
+          <div class="row px-3 mt-2">
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="Pension Type">Date of Birth</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3 d-flex flex-column fw-bold ">
+              <input type="date" name="dob" id="dob" />
+            </div>
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="Pension Type">Age (In Years)</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3 fw-bold ">
+              <input type="text" name="age" id="age" disabled />
+            </div>
+          </div>
+          <div class="row px-3 mt-2">
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="guardian">Father / Husband / Guardian name</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3 fw-bold ">
+              <input type="text" name="guardian" id="guardian" class="form-control" />
+            </div>
+            <div class="offset-sm-6"></div>
+          </div>
+          <div class="row px-3 mt-2">
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="gender">Gender</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3  d-flex flex-column" id="genderContainer">
+              <p class="d-flex gap-2"><input type="radio" name="gender" value="male" />MALE</p>
+              <p class="d-flex gap-2"><input type="radio" name="gender" value="female" />FEMALE</p>
+            </div>
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="Pension Type">Category</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3 d-flex flex-column" id="categoryContainer">
+              <p class="d-flex gap-2"><input type="radio" name="category" value="PHH" />PRIORITY HOUSEHOLD (PHH)</p>
+              <p class="d-flex gap-2"><input type="radio" name="category" value="AAY" />ANTYODAYA ANNA YOJANA (AAY)</p>
+              <p class="d-flex gap-2"><input type="radio" name="category" value="NPHH" />NON-PRIORITY HOUSE HOLD (NPHH)
+              </p>
+            </div>
+          </div>
+          <div class="row px-3 mt-2">
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="contact">Mobile Number</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3">
+              <input type="text" name="number" id="number" maxlength="10" class="form-control" />
+            </div>
+            <div class="col-sm-3 fw-bold d-flex gap-2">
+              <label class="form-label" for="email">E-mail</label>
+              <p class="text-danger">*</p>
+            </div>
+            <div class="col-sm-3">
+              <input type="email" name="email" id="email" class="form-control" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @* Present Address *@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p
+            class="d-flex align-items-center fw-bold justify-content-center bg-success text-white rounded py-1 heading">
+            Present Address
+          </p>
+        </div>
+        <div class="col-sm-12 ">
+          <div class="row px-3">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present address">Present Address</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="preAddress" id="preAddress" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present district">Present District</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="preDistrict" id="preDistrict">
+                <option value="Please Select">Please Select</option>
+                <option value="jammu">Jammu</option>
+                <option value="rajouri">Rajouri</option>
+              </select>
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label for="present tehsil">Present Tehsil</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="preTehsil" id="preTehsil">
+                <option value="Please Select">
+                  Please Select
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present block">Present Block Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="preBlock" id="preBlock" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present halqa">Present Halqa Panchayat / Municipality Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="preMuncipality" id="preMuncipality" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present village">Present Village Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="preVillage" id="preVillage" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present ward">Present Ward Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="preWard" id="preWard" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present pincode">Pincode</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="prePincode" id="prePincode" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @* Permanent Address *@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p
+            class="d-flex align-items-center fw-bold justify-content-center bg-success text-white rounded py-1 heading">
+            Permanent Address
+          </p>
+        </div>
+        <div class="col-sm-12 ">
+          <div class="row px-3">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present address">Is "Permanent Address" same as "Present Address"</label>
+            </div>
+            <div class="col-sm-6">
+              <p class="d-flex gap-2">YES<input type="checkbox" name="isPresent" id="isPresent" /></p>
+            </div>
+          </div>
+          <div class="row px-3">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="present address">Permanent Address</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="perAddress" id="perAddress" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="persent district">Permanent District</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="perDistrict" id="perDistrict">
+                <option value="Please Select">Please Select</option>
+                <option value="jammu">Jammu</option>
+                <option value="rajouri">Rajouri</option>
+              </select>
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label for="permanent tehsil">Permanent Tehsil</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="perTehsil" id="perTehsil">
+                <option value="Please Select">
+                  Please Select
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="permanent block">Permanent Block Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="perBlock" id="perBlock" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="permanent halqa">Permanent Halqa Panchayat / Municipality Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="perMuncipality" id="perMuncipality" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="permanent village">Permanent Village Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="perVillage" id="perVillage" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="permanent ward">Permanent Ward Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="perWard" id="perWard" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="permanent pincode">Pincode</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="perPincode" id="perPincode" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @* Bank Details*@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p
+            class="d-flex align-items-center fw-bold justify-content-center bg-success text-white rounded py-1 heading">
+            Bank Details
+          </p>
+        </div>
+        <div class="col-sm-12 ">
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="bank name">Bank Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <select class="form-select" name="bankName" id="bankName">
+                <option value="Please Select">Please Select</option>
+                <option value="THE JAMMU AND KASHMIR BANK LTD.">THE JAMMU AND KASHMIR BANK LTD.</option>
+                <option value="J & K GRAMEEN BANK">J & K GRAMEEN BANK</option>
+                <option value="ELLAQUAI DEHTI BANK">ELLAQUAI DEHTI BANK</option>
+                <option value="INDIA POST PAYMENTS BANK">INDIA POST PAYMENTS BANK</option>
+              </select>
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label for="branch name">Branch Name</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="branchName" id="branchName" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="ifcs">IFCS Code</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="ifcsCode" id="ifcsCode" />
+            </div>
+          </div>
+          <div class="row px-3 mt-1">
+            <div class="col-sm-6 fw-bold d-flex gap-2">
+              <label class="form-label" for="account number">Account No. of the Applicant</label>
+              <p class="text-danger ">*</p>
+            </div>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="accNumber" id="accNumber" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @* Previous Pension Details *@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p
+            class="d-flex align-items-center fw-bold justify-content-center bg-success text-white rounded py-1 heading">
+            Previous Pension Details (If Any)
+          </p>
+        </div>
+        <div class="row px-3 mt-1">
+          <div class="col-sm-6 fw-bold d-flex gap-2">
+            <label class="form-label" for="previous pension">Are you previously taking Pension from JK-ISSS / GOI-NSAP
+            </label>
+            <p class="text-danger ">*</p>
+          </div>
+          <div class="col-sm-6">
+            <select class="form-select" name="isPreviousBank" id="isPreviousBank">
+              <option value="Please Select">Please Select</option>
+              <option value="YES">YES</option>
+              <option value="NO">NO</option>
+            </select>
+          </div>
+        </div>
+        <div class="row px-3 mt-1">
+          <div class="col-sm-12" id="previousBank">
+
+          </div>
+        </div>
+      </div>
+
+      @* Consent for Rapid Assessment System (RAS) *@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p
+            class="d-flex align-items-center fw-bold justify-content-center bg-success text-white rounded py-1 heading">
+            Consent for Rapid Assessment System (RAS)
+          </p>
+        </div>
+        <div class="row px-3 mt-1">
+          <div class="col-sm-6 fw-bold">
+            <label class="form-label" for="previous pension">
+              Do you consent to share your email Id and mobile number with
+              Rapid Assessment System developed by Government of India for taking your feedback on the service?
+              Yes/No/क्या आप सेवा पर आपकी प्रतिक्रिया लेने के लिए भारत सरकार द्वारा विकसित रैपिड असेसमेंट सिस्टम के साथ
+              अपना ईमेल आईडी और मोबाइल नंबर साझा करने के लिए सहमत हैं? हां नहीं <span class="text-danger ">*</span>
+            </label>
+
+          </div>
+          <div class="col-sm-6">
+            <div class="row">
+              <div class="col-sm-6">
+                <p class="d-flex gap-2"><input type="radio" name="consent" value="YES" checked />YES</p>
+              </div>
+              <div class="col-sm-6">
+                <p class="d-flex gap-2"><input type="radio" name="consent" value="NO" />NO</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @* Decleration*@
+      <div class="row py-2 border border-2 border-dark rounded mt-2">
+        <div class="col-sm-12">
+          <p
+            class="d-flex align-items-center fw-bold justify-content-center bg-success text-white rounded py-1 heading">
+            Decleration
+          </p>
+        </div>
+        <div class="row px-3 mt-1">
+          <div class="col-sm-12 fw-bold d-flex gap-2">
+            <label class="form-label" for="previous pension">
+
+              I hereby declare that all the particulars stated above are true to the best of my knowledge and belief and
+              no material information has been concealed or misstated. The financial assistance so received shall be
+              incurred for the purpose of marriage only. I further state that if any inaccuracy is detected in the
+              application, I shall be liable to forefeiture / refund of the financial assistance.
+
+            </label>
+          </div>
+          <div class="col-sm-12 d-flex flex-column  gap-2" id="agreeContainer">
+            <div class="d-flex gap-2">
+              <input type="checkbox" name="agree" id="agree" class="form-check-input ">
+              <p>I Agree</p>
+              <span class="text-danger">*</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @* Buttons *@
+      <div class="row  border border-2 border-dark mt-2">
+        <div class="col-sm-12 bg-primary" style="height: 100px;">
+          <p class="d-flex align-items-center  justify-content-center py-1">
+            Department of Social Welfare, UT of J&K
+          </p>
+        </div>
+        <div class="col-sm-12 d-flex justify-content-end mt-2 gap-2 p-1">
+          <button type="button" class="btn btn-info">Draft</button>
+          <button type="submit" class="btn btn-success">Submit</button>
+          <button type="button" class="btn btn-danger">Close</button>
+          <button type="reset" class="btn btn-primary">Reset</button>
+        </div>
+      </div>
+  </form>
+</div>
+
+
+
+<script src="~/js/form/objects.js"></script>
+<script src="~/js/form/functions.js"></script>
+<script src="~/js/form/embed.js"></script>
